@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'test_tasks/main'
+  get 'test_tasks/main' => 'test_tasks#main'
+  get 'test_tasks/signed' => 'test_tasks#signed'
 
   get 'sessions/new'
 
