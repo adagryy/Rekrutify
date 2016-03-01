@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   get 'test_tasks/main' => 'test_tasks#main'
   get 'test_tasks/signed' => 'test_tasks#signed'
 
-  get 'sessions/new'
+  # get 'sessions/new'
 
-  get 'users/new'
+  # get 'users/new'
 
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "users#new"
+  root :to => "users#welcome"
   resources :users
   resources :sessions
 
