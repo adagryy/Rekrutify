@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+   get 'employers/create'
+
   get 'test_tasks/main' => 'test_tasks#main'
   get 'test_tasks/signed' => 'test_tasks#signed'
 
@@ -9,9 +11,17 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
+
+  get "employers/employerlogged" => "employers_registering#employerlogged"
+  
+
+  get "log_employer" => "employers#new", :as => "log_employer"
+
+
   root :to => "users#welcome"
   resources :users
   resources :sessions
+  resources :employers 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

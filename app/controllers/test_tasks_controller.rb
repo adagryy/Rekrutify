@@ -7,6 +7,9 @@ class TestTasksController < ApplicationController
 	def signed
 	end
 
+	def administrator
+	end
+
   # Confirms a logged-in user.
 	def logged_in_user
 	  unless logged_in?

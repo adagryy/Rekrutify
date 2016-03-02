@@ -21,3 +21,8 @@ class SessionsController < ApplicationController
 	  redirect_to root_url, :notice => "Poprawnie wylogowano!"
 	end
 end
+
+#login, hasło, nazwa_firmy, telefon, adres
+
+#miasto - do tabeli users 
+#rails g model user email:string password_hash:string password_salt:string
