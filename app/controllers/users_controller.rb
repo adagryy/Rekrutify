@@ -3,13 +3,16 @@ class UsersController < ApplicationController
 	end
 
 	def new
+  	  if logged_in?
+		redirect_to url_for(controller: 'test_tasks', action: 'main')
+	  end
 	  @user = User.new
 	end
 
 	def create
 	  @user = User.new(params[:user])
 	  if @user.save
-	    redirect_to url_for(controller: 'test_tasks', action: 'signed'), :notice => "Signed up!"
+	    redirect_to url_for(controller: 'test_tasks', action: 'signed'), :notice => "Poprawnie zalogowano!"
 	  else
 	    render "new"
 	  end

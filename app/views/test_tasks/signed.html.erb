@@ -4,6 +4,20 @@
 	<title>Please Log in!</title>
 </head>
 <body>
+
+	<div id="user_nav">
+	  <% if current_user %>
+	    Logged in as <%= current_user.email %>.
+	    <%= link_to "Wyloguj się!", log_out_path %>
+	  <% else %>
+	    <%= link_to "Załóż konto!", sign_up_path %> or
+	    <%= link_to "Zaloguj się tu!", log_in_path %>
+	  <% end %>
+	</div>
+
+	<% flash.each do |name, msg| %>
+	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	<% end %>
 	<h1>Proszę się zalogować!!!</h1>
 </body>
 </html>

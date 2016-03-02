@@ -10,7 +10,7 @@ class TestTasksController < ApplicationController
   # Confirms a logged-in user.
 	def logged_in_user
 	  unless logged_in?
-	    flash[:danger] = "Please log in."
+	    flash[:danger] = "Proszę się zalogować."
 	    redirect_to url_for(controller: 'sessions', action: 'new')
 	  end
 	end
