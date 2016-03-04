@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'app_manager/show'
+
+  get 'app_manager/index'
+
+  get 'app_manager/destroy'
+
    get 'employers/create'
 
   get 'test_tasks/main' => 'test_tasks#main'
@@ -12,10 +18,11 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
-  get "employers/employerlogged" => "employers_registering#employerlogged"
+  get "administration" => "app_manager#index"
   
 
   get "log_employer" => "employers#new", :as => "log_employer"
+  get "wyloguj" => "employers#destroy", :as => "wyloguj"
 
 
   root :to => "users#welcome"

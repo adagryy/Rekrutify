@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   include SessionsHelper
+  include EmployersHelper
   
 	private
 
