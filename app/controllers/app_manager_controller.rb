@@ -1,5 +1,6 @@
 class AppManagerController < ApplicationController
 	before_action :logged_in_employer
+	
 
   def show
   end
