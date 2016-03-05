@@ -1,7 +1,9 @@
 class EmployersController < ApplicationController
 
   def new
-
+    if logged_employer_in?
+      redirect_to url_for(controller: 'app_manager', action: 'index')
+    end
   end
 
   def index

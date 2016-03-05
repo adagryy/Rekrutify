@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+	before_action :logged_in_user, only: [:edit, :update]
+	before_action :correct_user,   only: [:edit, :update]
+
 	def welcome
 	end
+
+      def show
+	    @user = User.find(params[:id])
+	  end
 
 	def new
   	  if logged_in?
@@ -8,6 +15,20 @@ class UsersController < ApplicationController
 	  end
 	  @user = User.new
 	end
+
+	  def edit
+	    @user = User.find(params[:id])
+	  end
+
+	  def update
+	    @user = User.find(params[:id])
+	    if @user.update_attributes(user_params)
+	        flash[:success] = "Profile updated"
+      		redirect_to url_for(controller: 'test_tasks', action: 'main')
+	    else
+	      render 'edit'
+	    end
+	  end
 
 	# def index
 	# 	@users = User.all
@@ -27,4 +48,24 @@ class UsersController < ApplicationController
 	    render "new"
 	  end
 	end
+
+	def logged_in_user
+	  unless logged_in?
+	    flash[:danger] = "Proszę się zalogować."
+	    redirect_to url_for(controller: 'sessions', action: 'new')
+	  end
+	end
+
+	private
+
+	    def user_params
+	      params.require(:user).permit(:email, :password,
+	                                   :password_confirmation)
+	    end
+
+        # Confirms the correct user.
+	    def correct_user
+	      @user = User.find(params[:id])
+	      redirect_to url_for(controller: 'test_tasks', action: 'main') unless @user == current_user 
+	    end
 end
