@@ -25,4 +25,6 @@ class Employer < ActiveRecord::Base
       end
     end
 end
-# Employer.create :login => "adagryy", :password => "abcd", :company_name => "PW", :telephone => "23432432", :address => "Warszawa"
+# Employer.create :login => "adagryy", :password => "shaded", :company_name => "PW", :telephone => "23432432", :address => "Warszawa"
+# Employer.create :login => "DariuszDybka", :password => "darek123", :company_name => "PW", :telephone => "23432432", :address => "Warszawa"
+# Employer.create :login => "wisniem", :password => "martynka", :company_name => "PW", :telephone => "23432432", :address => "Warszawa"

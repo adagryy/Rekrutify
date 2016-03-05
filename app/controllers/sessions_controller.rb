@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 	  session[:user_id] = nil
-	  redirect_to root_url, :notice => "Poprawnie wylogowano!"
+	  redirect_to log_in_path, :notice => "Poprawnie wylogowano!"
 	end
 end
 

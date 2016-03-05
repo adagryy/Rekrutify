@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 	# 	@users = User.all
 	# end
 
+	def destroy
+		User.find(params[:id]).destroy
+    	flash[:success] = "User deleted"
+  		redirect_to url_for(controller: 'app_manager', action: 'index')
+  	end
+
 	def create
 	  @user = User.new(params[:user])
 	  if @user.save

@@ -10,6 +10,7 @@ class AppManagerController < ApplicationController
   end
 
   def destroy
+  	# flash.now.alert = "Niepoprawne hasło/login"
   end
 
 	# Confirms a logged-in user.
