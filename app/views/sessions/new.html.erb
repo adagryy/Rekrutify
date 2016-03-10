@@ -24,7 +24,8 @@
 		    <%= text_field_tag :email, params[:email] %>
 		  </p>
 		  <p>
-		    <%= label_tag :Hasło %><br />
+		    <%= label_tag :Hasło %>
+		    <%= link_to "Nie pamiętasz hasła?", new_password_reset_path %><br />
 		    <%= password_field_tag :password %>
 		  </p>
 		  <p class="button"><%= submit_tag "Zaloguj się!" %></p>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :mail
   
   attr_accessor :password
   before_save :encrypt_password
@@ -8,6 +8,13 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+
+  def deliver_password_reset_instructions
+    self.perishable_token = SecureRandom.hex(4)
+    save(validate: false)
+
+    PasswordResetNotifier.password_reset_instructions(self).deliver_now
+  end
   
   def self.authenticate(email, password)
     user = find_by_email(email)
