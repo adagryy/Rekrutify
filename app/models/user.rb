@@ -6,13 +6,14 @@ class User < ActiveRecord::Base
   
   VALID_MAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
   validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  # validates_presence_of :password, :on => :create
+  # validates_presence_of :email
+  validates_uniqueness_of :email, message: 'W bazie istnieje już użytkownik z podanym loginem'
 
   validates :mail, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_MAIL_REGEX, :message => "Niepoprawny e-amil. Przykład poprawnego: foo@bar.com" },
-                    uniqueness: { case_sensitive: false }
+                    format: { with: VALID_MAIL_REGEX, :message => "Niepoprawny e-mail. Przykład poprawnego: foo@bar.com" },
+                    uniqueness: { case_sensitive: false, message: 'W bazie istnieje już użytkownik z podanym adresem email' }
+  validates :password, presence: { in: [true], message: 'Hasło musi mieć minimum 6 znaków'}, length: { minimum: 6 }, allow_nil: true
 
   def deliver_password_reset_instructions
     self.perishable_token = User.get_reset_token
