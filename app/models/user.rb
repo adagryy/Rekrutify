@@ -4,16 +4,25 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
   
+  VALID_MAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  validates :mail, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_MAIL_REGEX, :message => "Niepoprawny e-amil. Przykład poprawnego: foo@bar.com" },
+                    uniqueness: { case_sensitive: false }
+
   def deliver_password_reset_instructions
-    self.perishable_token = SecureRandom.hex(4)
+    self.perishable_token = User.get_reset_token
     save(validate: false)
 
     PasswordResetNotifier.password_reset_instructions(self).deliver_now
+  end
+
+  def User.get_reset_token
+    SecureRandom.urlsafe_base64
   end
   
   def self.authenticate(email, password)
