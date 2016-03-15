@@ -83,6 +83,4 @@ production:
   database: Prototyp_production
   username: Prototyp
   password: <%= ENV['PROTOTYP_DATABASE_PASSWORD'] %>
-
-gmail_username: 'audi8887@gmail.com'
-gmail_password: 'bcxT,23A'  
+ 
