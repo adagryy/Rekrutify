@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 	  user = User.authenticate(params[:email], params[:password])
 	  if user
 	    session[:user_id] = user.id
-	    redirect_to url_for(controller: 'test_tasks', action: 'main'), :notice => "Poprawnie zalogowano!"
+	    redirect_to url_for(controller: 'test_tasks', action: 'main')#, :notice => "Poprawnie zalogowano!"
 	  else
 	    flash.now.alert = "Niepoprawne hasło/login"
 	    render "new"
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 	  session[:user_id] = nil
-	  redirect_to log_in_path, :notice => "Poprawnie wylogowano!"
+	  redirect_to log_in_path#, :notice => "Poprawnie wylogowano!"
 	end
 end
 

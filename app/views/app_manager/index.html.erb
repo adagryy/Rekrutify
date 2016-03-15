@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Administration panel</title>
-</head>
-<body>
-	Logged in as <%= current_employer.login %>.
-	<%= link_to "Wyloguj się!", wyloguj_path %>
+Logged in as <%= current_employer.login %>.
+<%= link_to "Wyloguj się!", wyloguj_path %>
 
-	<% flash.each do |name, msg| %>
-	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
 
-	<% @users.each do |user, index| %>
-      <tr>
-      <p> User number: <%= user.id %> <br>
-        <td>Nick: <%= user.email %></td><br>
-        <td>Password_hash: <%= user.password_hash %></td>
-        <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-      </tr>
-      <br>
-    <% end %>
-</body>
-</html>
+<% @users.each do |user, index| %>
+    <tr>
+    <p> User number: <%= user.id %> <br>
+      <td>Nick: <%= user.email %></td><br>
+      <td>Password_hash: <%= user.password_hash %></td><br>
+      <td>Adres email: <%= user.mail %></td><br>
+      <%= link_to "delete", user, method: :delete,
+                                data: { confirm: "You sure?" } %>
+    </tr>
+    <br>
+  <% end %>
+

@@ -16,13 +16,13 @@ class User < ActiveRecord::Base
   validates :password, presence: { in: [true], message: 'Hasło musi mieć minimum 6 znaków'}, length: { minimum: 6 }, allow_nil: true
 
   def deliver_password_reset_instructions
-    self.perishable_token = User.get_reset_token
+    self.perishable_token = get_reset_token
     save(validate: false)
 
     PasswordResetNotifier.password_reset_instructions(self).deliver_now
   end
 
-  def User.get_reset_token
+  def get_reset_token
     SecureRandom.urlsafe_base64
   end
   

@@ -1,19 +1,32 @@
 <h1>Update your profile</h1>
-
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       
+      <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Dane wprowadzone do formularza są niepoprawne</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+      
       <%= f.label :login %>
       <%= f.text_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "Hasło" %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "Potwierdź nowe hasło" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit "Zapisz zmiany", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

@@ -1,51 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<!-- Strona rejestracji-->
-<body>
+<div id="user_nav">
+    <p>Posiadasz już konto?</p><br>
+    <%= link_to "Zaloguj się tu!", log_in_path %>
+</div>
 
-  <div id="user_nav">
-      <p>Posiadasz już konto?</p><br>
-      <%= link_to "Zaloguj się tu!", log_in_path %>
-  </div>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
 
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<h1>Rejestracja</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Dane wprowadzone do formularza są niepoprawne</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-
-  <h1>Podaj dane do testu</h1>
-
-  <%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-      <div class="error_messages">
-        <h2>Dane wprowadzone do formularza są niepoprawne</h2>
-        <ul>
-          <% for message in @user.errors.full_messages %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <p>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
       <%= f.label :Login %><br />
-      <%= f.text_field :email %>
-    </p>
+      <%= f.text_field :email, class: "form-control" %><br />
 
-    <p>
       <%= f.label :Email %><br />
-      <%= f.text_field :mail %>
-    </p>
-    <p>
+      <%= f.text_field :mail, class: "form-control" %><br />
+
       <%= f.label :Hasło %><br />
-      <%= f.password_field :password %>
-    </p>
-    <p>
+      <%= f.password_field :password, class: "form-control" %><br />
+
       <%= f.label :Powtórz_hasło%><br />
-      <%= f.password_field :password_confirmation %>
-    </p>
-    <p class="button"><%= f.submit "Zarejesrtuj się!"%></p>
-  <% end %>
-</body>
-</html>
+      <%= f.password_field :password_confirmation, class: "form-control" %><br />
+
+      <%= f.submit "Zarejesrtuj się!", class: "btn btn-primary" %>
+      </div>
+  </div>
+<% end %>

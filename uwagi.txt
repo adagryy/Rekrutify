@@ -1,0 +1,13 @@
+1. Pierwsza strona to strona logowania (jak na Isodzie[loguj się jako kandydat lub pracodawca]). Następna opcja to na pierwszym ekranie to możliwośc założnia nowego konta. -->Done!<--
+2. Wywalić "poprawnie zalogowano"
+3. Po zalogowaniu widzimy stronę główną profilu użytkownika
+4. Wyświetlamy bazę firm na stronie głównej.	
+5. meetup.com - wzorzec
+6. Wyświetlamy po jednym pytaniu i po jednym pytaniu zapisujemy w bazie.
+7. Wchodząc w kafelek sieciowca wyświetlamy jeszcze widok informacyjny, a dopiero potem przechodzimy do testu
+8. Po zakończeniu testu przechodzimy do strony głównej, uaktualniany jest wynik
+9. Zakładka mój profil, baza firm, testy i statystyki po lewej stronie(zmiana hasła, dane osobowe, wklejanie CV).
+10. To co wybierzemy po lewej stronie znajdzie się po prawej
+Pracodawca:
+11. Podział na kategorie (widzi wszystkie wyniki: na sieciowców, analityków, itd.)
+12. Zakładka mój profil, moje oferty (szczegóły później) statystyki po lewej stronie(zmiana hasła, dane osobowe, wklejanie CV).

@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Strona powitalna</title>
-	<%= stylesheet_link_tag params[:TestTasks] %>
-</head>
-<body>
-	<div id="user_nav">
-	  <% if current_user %>
-	    Jesteś zalogowany jako: <%= current_user.email %>.
-	    <%= link_to "Wyloguj się!", log_out_path %>
-	    <%= link_to "Wyświetl Profil", current_user %>
-	  <% else %>
-	    <%= link_to "Załóż konto!", sign_up_path %> or
-	    <%= link_to "Zaloguj się tu!", log_in_path %>
-	  <% end %>
-	</div>
+<div id="user_nav">
+  <% if current_user %>
+    Jesteś zalogowany jako: <%= current_user.email %>.
+    <%= link_to "Wyloguj się!", log_out_path %>
+    <%= link_to "Wyświetl Profil", current_user %>
+  <% else %>
+    <%= link_to "Załóż konto!", sign_up_path %> or
+    <%= link_to "Zaloguj się tu!", log_in_path %>
+  <% end %>
+</div>
 
-	<% flash.each do |name, msg| %>
-	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
-	<p>Witaj użytkowniku!</p>
-</body>
-</html>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+<p>Witaj użytkowniku!</p>

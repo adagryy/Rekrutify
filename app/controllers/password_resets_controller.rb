@@ -7,25 +7,24 @@ class PasswordResetsController < ApplicationController
 
     if user
       user.deliver_password_reset_instructions
-      flash[:notice] = "Instructions to reset your password have been emailed to you"
-
+      flash[:notice] = "E-mail z instrukcjami do zresetowania hasła został pomyślnie wysłany"
       redirect_to url_for(controller: 'sessions', action: 'new')
     else
-      flash.now[:error] = "No user was found with email address #{params[:mail]}"
+      flash.now[:error] = "Nie znaleziono użytkownika z adresem E-mail: #{params[:mail]}"
       render :new
     end
   end
 
   def edit
-    # load_user_using_perishable_token
-    @token = params[:token]
+    load_user_using_perishable_token
+    @token = @user.perishable_token
   end
 
   def update
     load_user_using_perishable_token
     @user.password = params[:password]
 
-    if @user.save
+    if @user.save and params[:password] == params[:password_confirmation]
       flash[:success] = "Your password was successfully updated"
       redirect_to @user
     else

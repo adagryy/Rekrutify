@@ -1,35 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<!-- Strona logowania -->
-<body>
-	<div id="user_nav">
-		<p>Nie masz jeszcze konta?</p><br>
-	    <%= link_to "Utwórz nowe konto", sign_up_path %> 
-	</div>
-
-	<% flash.each do |name, msg| %>
-	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
 
 
-	<div class="a1">
-		<h1>Logowanie</h1>
-
+<div class="a1">
+	<h1>Logowanie</h1>
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
 		<%= form_tag sessions_path do %>
-		  <p>
-		    <%= label_tag :Login %><br />
-		    <%= text_field_tag :email, params[:email] %>
-		  </p>
-		  <p>
-		    <%= label_tag :Hasło %>
-		    <%= link_to "Nie pamiętasz hasła?", new_password_reset_path %><br />
-		    <%= password_field_tag :password %>
-		  </p>
-		  <p class="button"><%= submit_tag "Zaloguj się!" %></p>
+	  
+	    <%= label_tag :Login %><br />
+	    <%= text_field_tag :email, params[:email], class: "form-control" %>
+	  
+	
+	    <%= label_tag :Hasło %>
+	    <%= link_to "Nie pamiętasz hasła?", new_password_reset_path %><br />
+	    <%= password_field_tag :password, nil,  class: "form-control" %>
+	
+	  	<%= submit_tag "Zaloguj się!", class: "btn btn-primary" %>
 		<% end %>
+		<p>Nie masz jeszcze konta? <%= link_to "Utwórz nowe konto", sign_up_path %> </p>
+		
+	  </div>
 	</div>
-</body>
-</html>
+</div>
+<div id="user_nav">
+
+</div>
+

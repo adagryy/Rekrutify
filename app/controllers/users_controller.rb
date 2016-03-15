@@ -10,9 +10,9 @@ class UsersController < ApplicationController
 	  end
 
 	def new
-  	  if logged_in?
-		redirect_to url_for(controller: 'test_tasks', action: 'main')
-	  end
+  # 	  if logged_in?
+		# redirect_to url_for(controller: 'test_tasks', action: 'main')
+	 #  end
 	  @user = User.new
 	end
 
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 	        flash[:success] = "Profile updated"
       		redirect_to url_for(controller: 'test_tasks', action: 'main')
 	    else
+	    	flash[:success] = "Profile not updated"
 	      render 'edit'
 	    end
 	  end
