@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get '/password_resets/edit' => 'password_resets#edit', as: :edit_password_reset
   put '/password_resets/' => 'password_resets#update', as: :password_reset
 
+  # heroku pg:push prototyp_development DATABASE_URL --app prototypadam
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
