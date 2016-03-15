@@ -1,3 +1,5 @@
-<h1>Profil użytkownika </h1>
+<h1>Profil użytkownika "<%= current_user.email %>"</h1>
 
-<%= link_to "Zmień hasło", { :controller => "users", :action => "edit"}, class: "btn btn-danger" %>
+<%= link_to "Zmień hasło", { :controller => "users", :action => "edit"}, class: "btn btn-danger" %><br>
+<%= link_to "Powrót do strony profilowej", { :controller => "test_tasks", :action => "main"}, class: "btn btn-danger" %>
+
