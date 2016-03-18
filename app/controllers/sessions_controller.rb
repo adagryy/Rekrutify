@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 	    session[:user_id] = user.id
 	    redirect_to url_for(controller: 'test_tasks', action: 'main')#, :notice => "Poprawnie zalogowano!"
 	  else
-	    flash.now.alert = params[:email]#{}"Niepoprawne hasło/login"
+	    flash.now.alert = "Niepoprawne hasło/login"
 	    render "new"
 	  end
 	end

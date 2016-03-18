@@ -1,25 +1,24 @@
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-
-
 <div class="a1">
 	<h1>Logowanie</h1>
 	<div class="row">
 	  <div class="col-md-6 col-md-offset-3">
+	    <% flash.each do |name, msg| %>
+		  <p><%= content_tag :div, msg, :id => "flash_#{name}" %></p>
+		<% end %>
+
 		<%= form_tag sessions_path do %>
 	  
 	    <%= label_tag :Login %><br />
-	    <%= text_field_tag :email, params[:email], class: "form-control" %>
+	    <%= text_field_tag :email, params[:email], class: "form-control" %><br />
 	  
 	
 	    <%= label_tag :Hasło %>
 	    <%= link_to "Nie pamiętasz hasła?", new_password_reset_path %><br />
-	    <%= password_field_tag :password, nil,  class: "form-control" %>
+	    <%= password_field_tag :password, nil,  class: "form-control" %><br />
 	
-	  	<%= submit_tag "Zaloguj się!", class: "btn btn-primary" %>
+	  	<%= submit_tag "Zaloguj się!", class: "btn btn-primary" %>  Nie masz jeszcze konta? <%= link_to "Utwórz nowe konto", sign_up_path %> <br /> 
 		<% end %>
-		<p>Nie masz jeszcze konta? <%= link_to "Utwórz nowe konto", sign_up_path %> </p>
+		
 		
 	  </div>
 	</div>

@@ -24,9 +24,9 @@ class PasswordResetsController < ApplicationController
     load_user_using_perishable_token
     @user.password = params[:password]
 
-    if @user.save and params[:password] == params[:password_confirmation]
+    if @user.save
       flash[:success] = "Your password was successfully updated"
-      redirect_to @user
+      redirect_to log_in_path
     else
       render :edit
     end
@@ -41,4 +41,8 @@ class PasswordResetsController < ApplicationController
       redirect_to root_url
     end
   end
+
+  # def user_params
+  #   params.require(:user).permit(:password, :password_confirmation)
+  # end
 end
